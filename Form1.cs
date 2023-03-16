@@ -31,17 +31,17 @@ namespace Lr1._2_1
             int x = int.Parse(textBox2.Text);
             int y = int.Parse(textBox3.Text);
             String a = "";
-            if((x > -15 || x < 0) && (y < 0 || y > -15))
+            if((x > -15 && x < 0) && (y < 0 && y > -15))
             {
                 a = "Нет";
             }
-            else if((x >= -15 && x <= 0) && (y >= -15 && y <= 0 ))
+            else if(((x >= -15 && x <= 0) && (y == 0 || y == -15)) || ((x == 0 || x == -15) && (y <= 0 && y >= -15)))
             {
                 a = "на границе";
             }
             else
             {
-                a = "Внутри";
+                a = "да";
             }
             label2.Text = a;
 
@@ -97,23 +97,43 @@ namespace Lr1._2_1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int[] nums = { 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 2, 2, 2, 2, 2, 2, 3, 4, 5, 2, 2, 2, 1, 2, 3, 2, 2, 0, 1, 2, -1 };
-
-            int count = 5;
-            label5.Text = "";
-            for (int i = 0; i < nums.Length; i++)
+            int a = 2;
+            int b = 3;
+            for(int i  = 5; i > 0; i--)
             {
-                //Console.Write(nums[i] + " ");
-                label5.Text += nums[i] + " ";
-                count--;
-                if (count == 0)
+                for (int j = 5; j > 0; j--)
                 {
-                    label5.Text += "\n";
-                    if (i < nums.Length - 1)
-                    {
-                        count = nums[i + 1];
-                    }
+
                 }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            double a, b, h;
+            a = double.Parse(textBox5.Text);
+            b = double.Parse(textBox6.Text);
+            h = double.Parse(textBox7.Text);
+            double y;
+            int i = 1;
+            label9.Text = "";
+            label9.Text += "# " + "x " + "f(x) " + "\n";
+            for (double x = a; x <= b; x += h, ++i)
+            {
+                if ((x+2) <= 1)
+                {
+                    y = Math.Pow(x,2);
+                }
+                else if((x+2) > 1 && (x+2) < 10)
+                {
+                    y = 1/(x+2);
+                }
+                else
+                {
+                    y = x + 2;
+                }
+                
+                label9.Text += i + " " +  x + " " + y + "\n";
             }
         }
     }
