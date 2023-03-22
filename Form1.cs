@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -97,14 +98,23 @@ namespace Lr1._2_1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int a = 2;
-            int b = 3;
-            for(int i  = 5; i > 0; i--)
+            label5.Text = "";
+            int n = 5;
+            int two = 2;
+            int three = 2;
+            for (int i = n; i >= 1; --i)
             {
-                for (int j = 5; j > 0; j--)
+                for (int j = 1; j <= i; j++)
                 {
-
+                    label5.Text += Convert.ToString(two);
                 }
+                label5.Text += "\n";
+                for(int k = 1; k <= i; k++)
+                {
+                    label5.Text += Convert.ToString(three + k);
+                }
+                three--;
+                label5.Text += "\n";
             }
         }
 
